@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "sirius-api",
+  "version": "22.10.26",
+  "name": "Sirius API",
+  "description": "An utility API for AGNYA and TwoMoonStudios' mods.",
+  "authors": [
+    "AGNYA",
+    "TwoMoonStudios",
+    "GingerAlm"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/sirius",
+    "sources": "https://www.github.com/nvb-uy/Sirius"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "agnya.sirius.api.Loader"
+    ]
+  },
+  "depends": {
+    "fabric": "*",
+    "java": ">=17"
+  }
+}
