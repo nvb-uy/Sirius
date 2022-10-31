@@ -1,8 +1,3 @@
-# Automatically build the project and run any configured tests for every push
-# and submitted pull request. This can help catch issues that only occur on
-# certain platforms or Java versions, and provides a first line of defence
-# against bad commits.
-
 name: build
 on: [pull_request, push]
 
@@ -18,6 +13,8 @@ jobs:
         os: [ubuntu-20.04, windows-2022]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: enable run for fabric only
+        run: cd ./fabric
       - name: checkout repository
         uses: actions/checkout@v2
       - name: validate gradle wrapper
@@ -28,12 +25,12 @@ jobs:
           java-version: ${{ matrix.java }}
       - name: make gradle wrapper executable
         if: ${{ runner.os != 'Windows' }}
-        run: chmod +x ./fabric/gradlew
+        run: chmod +x ./gradlew
       - name: build
-        run: ./fabric/gradlew build
+        run: ./gradlew build
       - name: capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '17' }} # Only upload artifacts built from latest java on one OS
         uses: actions/upload-artifact@v2
         with:
           name: Artifacts
-          path: fabric/build/libs/
+          path: /build/libs/
