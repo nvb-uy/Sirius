@@ -20,3 +20,4 @@ dependencies {
 ```
 
 You can get the fileid from the CurseForge's URL.
+Make sure you're looking for the file that starts with [deObf]
