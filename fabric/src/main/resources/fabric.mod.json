@@ -1,12 +1,11 @@
 {
   "schemaVersion": 1,
   "id": "sirius-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Sirius API",
   "description": "An utility API for AGNYA and TwoMoonStudios' mods.",
   "authors": [
     "AGNYA",
-    "TwoMoonStudios",
     "GingerAlm"
   ],
   "contact": {
