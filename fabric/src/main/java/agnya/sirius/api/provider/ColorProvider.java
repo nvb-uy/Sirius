@@ -35,10 +35,6 @@ public class ColorProvider {
          * Example use to register grass color:
          *  ColorProvider.Register(MyTintedBlocks[], ColorProvider.get("grass"));
          */
-        switch(color) {
-            default: return;
-            case 0: BiomeColors.getGrassColor(null, null);
-        }
         for (int i = 0; i < blocks.length; i++) {
             ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) 
                 -> type(color, view, pos)
