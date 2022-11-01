@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "sirius-api",
-  "version": "22.10.26",
+  "version": "1.0.0",
   "name": "Sirius API",
   "description": "An utility API for AGNYA and TwoMoonStudios' mods.",
   "authors": [
