@@ -14,7 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: enable run for fabric only
-        run: cd ./fabric
+        run: cd fabric
       - name: checkout repository
         uses: actions/checkout@v2
       - name: validate gradle wrapper
