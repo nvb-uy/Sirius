@@ -7,6 +7,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockRenderView;
 
 public class ColorProvider {
+    
+    @Deprecated
     public static int get(String color) {
         /* Turns a string of the provider into an integer usable in the register method
          * 
@@ -20,6 +22,9 @@ public class ColorProvider {
         }
         return -1;
     }
+
+    public static final int GRASS_COLOR = 0; public static final int FOLIAGE_COLOR = 1; public static final int WATER_COLOR = 2;
+    
     private static int type(int colorid, BlockRenderView view, BlockPos pos) {
         switch(colorid) {
             case 0: return BiomeColors.getGrassColor(view, pos);
@@ -33,7 +38,7 @@ public class ColorProvider {
          * This applies for both blocks and blockitems.
          * 
          * Example use to register grass color:
-         *  ColorProvider.Register(MyTintedBlocks[], ColorProvider.get("grass"));
+         *  ColorProvider.Register(MyTintedBlocks[], ColorProvider.GRASS_COLOR);
          */
         for (int i = 0; i < blocks.length; i++) {
             ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) 

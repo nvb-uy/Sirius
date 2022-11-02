@@ -1,4 +1,4 @@
-package agnya.sirius.api.addonmaker;
+package agnya.sirius.api.management.config;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,27 +6,27 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AddonMaker {
+import agnya.sirius.api.management.Parser;
+
+public class ConfigMaker {
     
     public static final Logger LOGGER = LoggerFactory.getLogger("sirius-api");
     
     public static void setup(String folder) {
-        /* Setups a folder for addons.
-         *  Addon files may be stored and read using other methods of this class.
+        /* Setups a folder for configs.
          */
 
-        if (!new File(folder).exists()) {
-            new File(String.format("./%s", folder)).mkdirs();
-        }    
+        if (!new File("./config/%s", folder).exists()) {
+            new File(String.format("./config/%s", folder)).mkdirs();
+        }
     }
 
     public static void create(String folder, String filename, String extension) {
-        /* Creates a new addon file.
-         *  Addon files may be stored and read using other methods of this class.
+        /* Creates a new config file.
          */
-        if (!new File(String.format("./%s/%s.%s", folder, filename, extension)).exists()) {
+        if (!new File(String.format("./config/%s/%s.%s", folder, filename, extension)).exists()) {
             try {
-                new File(String.format("./%s/%s.%s", folder, filename, extension)).createNewFile();
+                new File(String.format("./config/%s/%s.%s", folder, filename, extension)).createNewFile();
             } catch (IOException exception) {
                 LOGGER.error(String.format("Failed to create file %s", filename), exception);
             }
@@ -43,5 +43,19 @@ public class AddonMaker {
         */
         
         return Parser.Data.getData(folder, filename, extension);
+    }
+
+    public static String findKey(String line, String[] lines) {
+        /* Finds a specific line
+        */
+        
+        for (int i = 0; i < lines.length; i++) {
+            if (!lines[i].startsWith("$comment") &&
+                lines[i].contains(line)) {
+                
+                return lines[i];
+            }
+        }
+        return null;
     }
 }
